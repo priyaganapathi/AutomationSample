@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import loginPage.pageobjects.landingPage;
 
 public class submitLogin {
+	ChromeDriver driver = new ChromeDriver();
 
 	
 	@Test
@@ -23,28 +24,37 @@ public class submitLogin {
 		System.setProperty("Webdriver.chrome.driver",
 				"C:\\Users\\Boodskap Labs\\Downloads\\chromedriver_win32 (4)\\Chrome.exe");
 
-		ChromeDriver driver = new ChromeDriver();
+		//ChromeDriver driver = new ChromeDriver();
 		landingPage landingpage1 = new landingPage(driver);
-		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS); // pageload timeout
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS); // pageload timeout
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 
 		// Launch website
 		landingpage1.goTo();
 
 		landingpage1.loginApplication("priyaganpat13@gmail.com", "Divyapriya@13");
+		
 
-//		driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys("priyaganpat13@gmail.com");
-//		driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys("Divyapriya@13");
-//		driver.findElement(By.xpath("//input[@value='Login']")).click();
+	}
+	@Test
+	public void error() {
+		// TODO Auto-generated method stub
 
-		driver.findElement(By.xpath("//a[normalize-space()='Edit Account']")).click();
+		// declaration and instantiation of objects/variables
+		System.setProperty("Webdriver.chrome.driver",
+				"C:\\Users\\Boodskap Labs\\Downloads\\chromedriver_win32 (4)\\Chrome.exe");
 
-		driver.findElement(By.xpath("//input[@id='input-firstname']")).clear();
-		driver.findElement(By.xpath("//input[@value='Continue']")).click();
+		
+		landingPage landingpage1 = new landingPage(driver);
+		driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS); // pageload timeout
+		driver.manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 
-		// Take a screenshot
+		// Launch website
+		landingpage1.goTo();
 
+		landingpage1.errorApplication("", "");
 		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
 		// Copy the file to a location and use try catch block to handle exception
@@ -52,8 +62,13 @@ public class submitLogin {
 			FileHandler.copy(screenshot,
 					new File("C:\\Users\\Boodskap Labs\\Downloads\\Scrshot\\homePageScreenshot.png"));
 		} catch (IOException e) {
-		System.out.println(e.getMessage());
+			System.out.println(e.getMessage());
 		}
 	}
 
-}
+		
+		
+	
+	}
+
+

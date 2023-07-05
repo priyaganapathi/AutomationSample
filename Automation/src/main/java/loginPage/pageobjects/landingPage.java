@@ -38,6 +38,13 @@ public class landingPage {
 		passwordEle.sendKeys(password);
 		submit.click();
 	}
+	public void errorApplication(String email,String password)
+	{
+		userEmail.sendKeys("");
+		passwordEle.sendKeys("");
+		submit.click();
+	}
+	
 	
 	public void goTo()
 	{
